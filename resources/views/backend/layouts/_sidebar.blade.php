@@ -2,7 +2,7 @@
                 <!-- START X-NAVIGATION -->
                 <ul class="x-navigation">
                     <li class="xn-logo">
-                        <a href="index.html">ATLANT</a>
+                        <a href="{{route('dashboard')}}">ATLANT</a>
                         <a href="#" class="x-navigation-control"></a>
                     </li>
                     <li class="xn-profile">
@@ -14,7 +14,7 @@
                                 <img src="{{asset('backend/assets/images/users/avatar.jpg')}}" alt="John Doe"/>
                             </div>
                             <div class="profile-data">
-                                <div class="profile-data-name">John Doe</div>
+                                <div class="profile-data-name">{{Auth::user()->name}} ({{Auth::user()->roles->pluck('name')->implode(', ')}})</div>
                                 <div class="profile-data-title">Web Developer/Designer</div>
                             </div>
                             <div class="profile-controls">
@@ -25,8 +25,36 @@
                     </li>
                     <li class="xn-title">Navigation</li>
                     <li class="active">
-                        <a href="index.html"><span class="fa fa-desktop"></span> <span class="xn-text">Dashboard</span></a>                        
-                    </li>                    
+                        <a href="{{route('dashboard')}}"><span class="fa fa-desktop"></span> <span class="xn-text">Dashboard</span></a>                        
+                    </li>
+                    @can('view permission')
+                        <li class="xn-openable">
+                            <a href="#"><span class="fa fa-lock"></span> <span class="xn-text">Permission</span></a>
+                            <ul>
+                                <li><a href="{{route('permission.index')}}"><span class="fa fa-image"></span> Permission List</a></li>
+                                <li><a href="{{route('permission.create')}}"><span class="fa fa-user"></span> Permission Create</a></li>           
+                            </ul>
+                        </li>
+                    @endcan
+                    @can('view role')
+                        <li class="xn-openable">
+                            <a href="#"><span class="fa fa-key"></span> <span class="xn-text">Role</span></a>
+                            <ul>
+                                <li><a href="{{route('role.index')}}"><span class="fa fa-image"></span> Role List</a></li>
+                                <li><a href="{{route('role.create')}}"><span class="fa fa-user"></span> Role Create</a></li>           
+                            </ul>
+                        </li>
+                    @endcan
+                    @can('view user')
+                        <li class="xn-openable">
+                            <a href="#"><span class="fa fa-user"></span> <span class="xn-text">User</span></a>
+                            <ul>
+                                <li><a href="{{route('user.index')}}"><span class="fa fa-image"></span> User List</a></li>
+                                <li><a href="{{route('user.create')}}"><span class="fa fa-user"></span> User Create</a></li>           
+                            </ul>
+                        </li>
+                    @endcan
+
                     <li class="xn-openable">
                         <a href="#"><span class="fa fa-files-o"></span> <span class="xn-text">Pages</span></a>
                         <ul>

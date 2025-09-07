@@ -4649,11 +4649,12 @@ td.dataTables_empty {
 }
 .message-box .mb-container {
   position: absolute;
-  left: 0px;
-  top: 35%;
-  background: rgba(0, 0, 0, 0.9);
-  padding: 20px;
-  width: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.9);
+    padding: 20px;
+    width: 50%;
 }
 .message-box .mb-container .mb-middle {
   width: 50%;

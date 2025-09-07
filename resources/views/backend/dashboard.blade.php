@@ -2,7 +2,7 @@
                 
                   
 @extends('backend.layouts.app')
-
+@section('title','Dashboard | School Management System')
 @section('content')
     <!-- START BREADCRUMB -->
     <ul class="breadcrumb">
