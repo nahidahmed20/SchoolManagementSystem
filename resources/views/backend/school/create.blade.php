@@ -1,5 +1,5 @@
 @extends('backend.layouts.app')
-@section('title','Role Create | School Management System')
+@section('title','School Create | School Management System')
 @section('content')
 
 <div class="page-content-wrap">

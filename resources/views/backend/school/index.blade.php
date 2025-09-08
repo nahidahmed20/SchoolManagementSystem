@@ -1,5 +1,5 @@
 @extends('backend.layouts.app')
-@section('title','Role List | School Management System')
+@section('title','School List | School Management System')
 @section('content')
 
 <style>
@@ -45,6 +45,7 @@
                                 <th>Address</th>
                                 <th>Email</th>
                                 <th>Image</th>
+                                <th>Status</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -56,6 +57,15 @@
                                     <td>{{ $school->email }}</td>
                                     <td>    
                                         <img src="{{ asset($school->image) }}" alt="{{ $school->name }}" width="50" height="50">
+                                    <td>
+                                        <div style="display: flex; gap: 5px; align-items: center;">
+                                            @if($school->status == 1)
+                                                <span class="badge badge-success">Active</span>
+                                            @else
+                                                <span class="badge badge-danger">Inactive</span>
+                                            @endif
+                                        </div>
+                                    </td>
                                     <td>
                                         <div style="display: flex; gap: 5px; align-items: center;">
                                             @can('schools.edit')
@@ -124,19 +134,19 @@ $(document).ready(function() {
              "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
         buttons: [
             { extend: 'csvHtml5', text: '<i class="fa fa-file-csv"></i> CSV', className: 'btn btn-success btn-sm', exportOptions: {
-                columns: ':not(:last-child):not(:nth-last-child(2))'  
+                columns: ':not(:last-child)'   
                 } 
             },
             { extend: 'excelHtml5', text: '<i class="fa fa-file-excel"></i> Excel', className: 'btn btn-success btn-sm', exportOptions: {
-                columns: ':not(:last-child):not(:nth-last-child(2))'  
+                columns: ':not(:last-child)'   
                 } 
             },
             { extend: 'pdfHtml5', text: '<i class="fa fa-file-pdf"></i> PDF', className: 'btn btn-danger btn-sm', exportOptions: {
-                columns: ':not(:last-child):not(:nth-last-child(2))'  
+                columns: ':not(:last-child)'   
                 } 
             },
             { extend: 'print', text: '<i class="fa fa-print"></i> Print', className: 'btn btn-info btn-sm', exportOptions: {
-                columns: ':not(:last-child):not(:nth-last-child(2))'  
+                columns: ':not(:last-child)'   
                 } 
             },
         ]

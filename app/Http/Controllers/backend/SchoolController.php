@@ -57,9 +57,9 @@ class SchoolController extends Controller implements HasMiddleware
         if($request->hasFile('profile_picture')){
             $image = $request->file('profile_picture');
             $name = time().'.'.$image->getClientOriginalExtension();
-            $destinationPath = public_path('/uploads/schools/');
+            $destinationPath = public_path('uploads/schools/');
             $image->move($destinationPath, $name);
-            $imageUrl = '/uploads/schools/'.$name;
+            $imageUrl = 'uploads/schools/'.$name;
         }
 
         User::create([
@@ -119,7 +119,7 @@ class SchoolController extends Controller implements HasMiddleware
             $image = $request->file('profile_picture');
             $name = time().'.'.$image->getClientOriginalExtension();
             $image->move(public_path('uploads/schools/'), $name);
-            $imageUrl = '/uploads/schools/'.$name;
+            $imageUrl = 'uploads/schools/'.$name;
         }
         
         $school->name    = $request->name;

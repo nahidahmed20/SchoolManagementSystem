@@ -66,6 +66,18 @@
                         </li>
                     @endcan
 
+                    @can('view teacher')
+                        <li class="xn-openable {{ request()->is('teachers*') ? 'active' : '' }}">
+                            <a href="#">
+                                <span class="fa fa-book"></span> <span class="xn-text">Teacher</span>
+                            </a>
+                            <ul>
+                                <li class="{{ request()->routeIs('teachers.index') ? 'active' : '' }}"><a href="{{route('teachers.index')}}"><span class="fa fa-image"></span> Teacher List</a></li>
+                                <li class="{{ request()->routeIs('teachers.create') ? 'active' : '' }}"><a href="{{route('teachers.create')}}"><span class="fa fa-user"></span> Teacher Create</a></li>           
+                            </ul>
+                        </li>
+                    @endcan
+
                     <li class="xn-openable">
                         <a href="#"><span class="fa fa-files-o"></span> <span class="xn-text">Pages</span></a>
                         <ul>
