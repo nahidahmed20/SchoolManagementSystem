@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\backend\SchoolController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
@@ -39,6 +40,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/user/{user}/edit', [UserController::class, 'edit'])->name('user.edit');
     Route::post('/user/{user}', [UserController::class, 'update'])->name('user.update');
     Route::get('/user/{user}', [UserController::class, 'destroy'])->name('user.destroy');
+
+    Route::resource('schools',SchoolController::class);
 });
 
 require __DIR__.'/auth.php';

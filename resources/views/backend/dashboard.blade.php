@@ -1,6 +1,3 @@
-
-                
-                  
 @extends('backend.layouts.app')
 @section('title','Dashboard | School Management System')
 @section('content')

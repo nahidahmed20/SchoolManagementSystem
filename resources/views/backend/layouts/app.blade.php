@@ -93,7 +93,7 @@
         <!-- END THIS PAGE PLUGINS-->        
 
         <!-- START TEMPLATE -->
-        <script type="text/javascript" src="{{asset('backend/js/settings.js')}}"></script>
+        {{-- <script type="text/javascript" src="{{asset('backend/js/settings.js')}}"></script> --}}
         
         <script type="text/javascript" src="{{asset('backend/js/plugins.js')}}"></script>        
         <script type="text/javascript" src="{{asset('backend/js/actions.js')}}"></script>

@@ -2,7 +2,7 @@
                 <!-- START X-NAVIGATION -->
                 <ul class="x-navigation">
                     <li class="xn-logo">
-                        <a href="{{route('dashboard')}}">ATLANT</a>
+                        <a href="{{route('dashboard')}}">School</a>
                         <a href="#" class="x-navigation-control"></a>
                     </li>
                     <li class="xn-profile">
@@ -24,33 +24,44 @@
                         </div>                                                                        
                     </li>
                     <li class="xn-title">Navigation</li>
-                    <li class="active">
+                    <li class="{{ request()->routeIs('dashboard') ? 'active' : '' }}">
                         <a href="{{route('dashboard')}}"><span class="fa fa-desktop"></span> <span class="xn-text">Dashboard</span></a>                        
                     </li>
                     @can('view permission')
-                        <li class="xn-openable">
+                        <li class="xn-openable {{ request()->is('permission*') ? 'active' : '' }}">
                             <a href="#"><span class="fa fa-lock"></span> <span class="xn-text">Permission</span></a>
                             <ul>
-                                <li><a href="{{route('permission.index')}}"><span class="fa fa-image"></span> Permission List</a></li>
-                                <li><a href="{{route('permission.create')}}"><span class="fa fa-user"></span> Permission Create</a></li>           
+                                <li class="{{ request()->routeIs('permission.index') ? 'active' : '' }}"><a href="{{route('permission.index')}}"><span class="fa fa-image"></span> Permission List</a></li>
+                                <li class="{{ request()->routeIs('permission.create') ? 'active' : '' }}"><a href="{{route('permission.create')}}"><span class="fa fa-user"></span> Permission Create</a></li>           
                             </ul>
                         </li>
                     @endcan
                     @can('view role')
-                        <li class="xn-openable">
+                        <li class="xn-openable {{ request()->is('role*') ? 'active' : '' }}">
                             <a href="#"><span class="fa fa-key"></span> <span class="xn-text">Role</span></a>
                             <ul>
-                                <li><a href="{{route('role.index')}}"><span class="fa fa-image"></span> Role List</a></li>
-                                <li><a href="{{route('role.create')}}"><span class="fa fa-user"></span> Role Create</a></li>           
+                                <li class="{{ request()->routeIs('role.index') ? 'active' : '' }}"><a href="{{route('role.index')}}"><span class="fa fa-image"></span> Role List</a></li>
+                                <li class="{{ request()->routeIs('role.create') ? 'active' : '' }}"><a href="{{route('role.create')}}"><span class="fa fa-user"></span> Role Create</a></li>           
                             </ul>
                         </li>
                     @endcan
                     @can('view user')
-                        <li class="xn-openable">
+                        <li class="xn-openable {{ request()->is('user*') ? 'active' : '' }}">
                             <a href="#"><span class="fa fa-user"></span> <span class="xn-text">User</span></a>
                             <ul>
-                                <li><a href="{{route('user.index')}}"><span class="fa fa-image"></span> User List</a></li>
-                                <li><a href="{{route('user.create')}}"><span class="fa fa-user"></span> User Create</a></li>           
+                                <li class="{{ request()->routeIs('user.index') ? 'active' : '' }}"><a href="{{route('user.index')}}"><span class="fa fa-image"></span> User List</a></li>
+                                <li class="{{ request()->routeIs('user.index') ? 'active' : '' }}"><a href="{{route('user.create')}}"><span class="fa fa-user"></span> User Create</a></li>           
+                            </ul>
+                        </li>
+                    @endcan
+                    @can('view school')
+                        <li class="xn-openable {{ request()->is('schools*') ? 'active' : '' }}">
+                            <a href="#">
+                                <span class="fa fa-graduation-cap"></span> <span class="xn-text">School</span>
+                            </a>
+                            <ul>
+                                <li class="{{ request()->routeIs('schools.index') ? 'active' : '' }}"><a href="{{route('schools.index')}}"><span class="fa fa-image"></span> School List</a></li>
+                                <li class="{{ request()->routeIs('schools.create') ? 'active' : '' }}"><a href="{{route('schools.create')}}"><span class="fa fa-user"></span> School Create</a></li>           
                             </ul>
                         </li>
                     @endcan
