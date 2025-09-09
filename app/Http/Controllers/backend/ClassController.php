@@ -5,12 +5,23 @@ namespace App\Http\Controllers\backend;
 use App\Models\Classes;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Routing\Controllers\Middleware;
+use Illuminate\Routing\Controllers\HasMiddleware;
 
-class ClassController extends Controller
+class ClassController extends Controller implements HasMiddleware
 {
     /**
      * Display a listing of the resource.
      */
+    public static function middleware(): array
+    {
+        return [
+            new Middleware('permission:view class', only: ['index']),
+            new Middleware('permission:create class', only: ['create']),
+            new Middleware('permission:edit class', only: ['edit']),
+            new Middleware('permission:delete class', only: ['destroy']),
+        ];
+    }
     public function index()
     {
         $classes = Classes::orderByDesc('id')->get();
@@ -31,7 +42,18 @@ class ClassController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' =>'required|string|max:255',
+        ]);
+
+        Classes::create([
+            'name'      => $request->name,
+            'status'    => $request->status,
+        ]);
+
+        flash()->success('Class has been created successfully!');
+
+        return redirect()->route('classes.index');
     }
 
     /**
@@ -47,7 +69,9 @@ class ClassController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $class = Classes::find($id);
+
+        return view('backend.class.edit',compact('class'));
     }
 
     /**
@@ -55,7 +79,20 @@ class ClassController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'name' =>'required|string|max:255',
+        ]);
+
+        $classes = Classes::find($id);
+
+        $classes->name = $request->name;
+        $classes->status = $request->status;
+
+        $classes->save();
+
+        flash()->success('Class has been updated successfully!');
+
+        return redirect()->route('classes.index');
     }
 
     /**
@@ -63,6 +100,10 @@ class ClassController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $classes = Classes::find($id);
+
+        $classes->delete();
+        flash()->success('Class has been deleted successfully!');
+        return redirect()->route('classes.index');
     }
 }

@@ -1,21 +1,21 @@
 @extends('backend.layouts.app')
-@section('title','Role Create | School Management System')
+@section('title','Class Create | School Management System')
 @section('content')
 
 <div class="page-content-wrap">
     <div class="row">
         <div class="col-md-12">
 
-            <!-- Create Role Form -->
-            <form action="{{ route('role.store') }}" method="POST">
+            <!-- Create Class Form -->
+            <form action="{{ route('classes.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h3 class="panel-title"><strong>Create</strong> Role</h3>
+                        <h3 class="panel-title"><strong>Create</strong> Class</h3>
                         <ul class="panel-controls">
                             <li>
-                                <a href="{{ route('role.index') }}" title="Back to Role List">
-                                    <span class="fa fa-list"></span>
+                                <a href="{{ route('classes.index') }}" title="Back to Class List">
+                                    <span class="fa fa-list"></span> 
                                 </a>
                             </li>
                         </ul>
@@ -23,36 +23,44 @@
 
                     <div class="panel-body">
 
-                        <!-- Role Name -->
-                        <div class="form-group">
-                            <label class="col-md-3 col-xs-12 control-label">Role Name</label>
-                            <div class="col-md-6 col-xs-12">
+                        <!-- Class Name -->
+                        <div class="form-group row">
+                            <label class="col-md-3 control-label">Class Name</label>
+                            <div class="col-md-6">
                                 <div class="input-group">
-                                    <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
-                                    <input type="text" name="name" value="{{ old('name') }}" class="form-control" placeholder="Enter Role Name" required>
+                                    <span class="input-group-addon"><i class="fa fa-pencil"></i></span>
+                                    <input type="text" name="name" value="{{ old('name') }}" class="form-control" placeholder="Enter Class Name" required>
                                 </div>
-
-                                @error('name')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
+                                @error('name') <span class="text-danger">{{ $message }}</span> @enderror
                             </div>
                         </div>
 
-                        <div class="clearfix" style="margin-bottom: 20px;"></div>
-
-                        
+                        <!-- Class Type -->
+                        <div class="form-group row">
+                            <label class="col-md-3 control-label">Statuss</label>
+                            <div class="col-md-6">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-toggle-on"></i></span>
+                                    <select name="status" class="form-control" required>
+                                        <option value="1">Active</option>
+                                        <option value="0">Inactive</option>
+                                    </select>
+                                </div>
+                                @error('status') <span class="text-danger">{{ $message }}</span> @enderror
+                            </div>
+                        </div>
 
                     </div>
 
                     <div class="panel-footer">
-                        <button type="reset" class="btn btn-default">Clear Form</button>
+                        <button type="reset" class="btn btn-default">Clear Form</button>                                    
                         <button type="submit" class="btn btn-primary pull-right">Submit</button>
                     </div>
                 </div>
             </form>
 
         </div>
-    </div>
+    </div>                    
 </div>
 
 @endsection

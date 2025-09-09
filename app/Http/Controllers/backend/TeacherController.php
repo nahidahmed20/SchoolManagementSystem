@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Routing\Controllers\Middleware;
 use Illuminate\Routing\Controllers\HasMiddleware;
 
-class TeacherController extends Controller
+class TeacherController extends Controller implements HasMiddleware
 {
     /**
      * Display a listing of the resource.
