@@ -21,18 +21,18 @@
                                 <a href="pages-profile.html" class="profile-control-left"><span class="fa fa-info"></span></a>
                                 <a href="pages-messages.html" class="profile-control-right"><span class="fa fa-envelope"></span></a>
                             </div>
-                        </div>                                                                        
+                        </div>
                     </li>
                     <li class="xn-title">Navigation</li>
                     <li class="{{ request()->routeIs('dashboard') ? 'active' : '' }}">
-                        <a href="{{route('dashboard')}}"><span class="fa fa-desktop"></span> <span class="xn-text">Dashboard</span></a>                        
+                        <a href="{{route('dashboard')}}"><span class="fa fa-desktop"></span> <span class="xn-text">Dashboard</span></a>
                     </li>
                     @can('view permission')
                         <li class="xn-openable {{ request()->is('permission*') ? 'active' : '' }}">
                             <a href="#"><span class="fa fa-lock"></span> <span class="xn-text">Permission</span></a>
                             <ul>
                                 <li class="{{ request()->routeIs('permission.index') ? 'active' : '' }}"><a href="{{route('permission.index')}}"><span class="fa fa-image"></span> Permission List</a></li>
-                                <li class="{{ request()->routeIs('permission.create') ? 'active' : '' }}"><a href="{{route('permission.create')}}"><span class="fa fa-user"></span> Permission Create</a></li>           
+                                <li class="{{ request()->routeIs('permission.create') ? 'active' : '' }}"><a href="{{route('permission.create')}}"><span class="fa fa-user"></span> Permission Create</a></li>
                             </ul>
                         </li>
                     @endcan
@@ -41,7 +41,7 @@
                             <a href="#"><span class="fa fa-key"></span> <span class="xn-text">Role</span></a>
                             <ul>
                                 <li class="{{ request()->routeIs('role.index') ? 'active' : '' }}"><a href="{{route('role.index')}}"><span class="fa fa-image"></span> Role List</a></li>
-                                <li class="{{ request()->routeIs('role.create') ? 'active' : '' }}"><a href="{{route('role.create')}}"><span class="fa fa-user"></span> Role Create</a></li>           
+                                <li class="{{ request()->routeIs('role.create') ? 'active' : '' }}"><a href="{{route('role.create')}}"><span class="fa fa-user"></span> Role Create</a></li>
                             </ul>
                         </li>
                     @endcan
@@ -50,7 +50,7 @@
                             <a href="#"><span class="fa fa-user"></span> <span class="xn-text">User</span></a>
                             <ul>
                                 <li class="{{ request()->routeIs('user.index') ? 'active' : '' }}"><a href="{{route('user.index')}}"><span class="fa fa-image"></span> User List</a></li>
-                                <li class="{{ request()->routeIs('user.index') ? 'active' : '' }}"><a href="{{route('user.create')}}"><span class="fa fa-user"></span> User Create</a></li>           
+                                <li class="{{ request()->routeIs('user.index') ? 'active' : '' }}"><a href="{{route('user.create')}}"><span class="fa fa-user"></span> User Create</a></li>
                             </ul>
                         </li>
                     @endcan
@@ -61,7 +61,7 @@
                             </a>
                             <ul>
                                 <li class="{{ request()->routeIs('schools.index') ? 'active' : '' }}"><a href="{{route('schools.index')}}"><span class="fa fa-image"></span> School List</a></li>
-                                <li class="{{ request()->routeIs('schools.create') ? 'active' : '' }}"><a href="{{route('schools.create')}}"><span class="fa fa-user"></span> School Create</a></li>           
+                                <li class="{{ request()->routeIs('schools.create') ? 'active' : '' }}"><a href="{{route('schools.create')}}"><span class="fa fa-user"></span> School Create</a></li>
                             </ul>
                         </li>
                     @endcan
@@ -73,7 +73,19 @@
                             </a>
                             <ul>
                                 <li class="{{ request()->routeIs('teachers.index') ? 'active' : '' }}"><a href="{{route('teachers.index')}}"><span class="fa fa-image"></span> Teacher List</a></li>
-                                <li class="{{ request()->routeIs('teachers.create') ? 'active' : '' }}"><a href="{{route('teachers.create')}}"><span class="fa fa-user"></span> Teacher Create</a></li>           
+                                <li class="{{ request()->routeIs('teachers.create') ? 'active' : '' }}"><a href="{{route('teachers.create')}}"><span class="fa fa-user"></span> Teacher Create</a></li>
+                            </ul>
+                        </li>
+                    @endcan
+
+                    @can('view class')
+                        <li class="xn-openable {{ request()->is('classes*') ? 'active' : '' }}">
+                            <a href="#">
+                                <span class="fa fa-book"></span> <span class="xn-text">Class</span>
+                            </a>
+                            <ul>
+                                <li class="{{ request()->routeIs('classes.index') ? 'active' : '' }}"><a href="{{route('classes.index')}}"><span class="fa fa-image"></span> Class List</a></li>
+                                <li class="{{ request()->routeIs('classes.create') ? 'active' : '' }}"><a href="{{route('classes.create')}}"><span class="fa fa-user"></span> Class Create</a></li>
                             </ul>
                         </li>
                     @endcan
@@ -107,15 +119,15 @@
                             <li><a href="pages-search.html"><span class="fa fa-search"></span> Search</a></li>
                             <li class="xn-openable">
                                 <a href="#"><span class="fa fa-file"></span> Blog</a>
-                                
-                                <ul>                                    
+
+                                <ul>
                                     <li><a href="pages-blog-list.html"><span class="fa fa-copy"></span> List of Posts</a></li>
                                     <li><a href="pages-blog-post.html"><span class="fa fa-file-o"></span>Single Post</a></li>
                                 </ul>
                             </li>
                             <li class="xn-openable">
                                 <a href="#"><span class="fa fa-sign-in"></span> Login</a>
-                                <ul>                                    
+                                <ul>
                                     <li><a href="pages-login.html">App Login</a></li>
                                     <li><a href="pages-login-website.html">Website Login</a></li>
                                     <li><a href="pages-login-website-light.html"> Website Login Light</a></li>
@@ -123,12 +135,12 @@
                             </li>
                             <li class="xn-openable">
                                 <a href="#"><span class="fa fa-warning"></span> Error Pages</a>
-                                <ul>                                    
+                                <ul>
                                     <li><a href="pages-error-404.html">Error 404 Sample 1</a></li>
                                     <li><a href="pages-error-404-2.html">Error 404 Sample 2</a></li>
                                     <li><a href="pages-error-500.html"> Error 500</a></li>
                                 </ul>
-                            </li>                            
+                            </li>
                         </ul>
                     </li>
                     <li class="xn-openable">
@@ -138,7 +150,7 @@
                             <li><a href="layout-nav-toggled.html">Navigation Toggled</a></li>
                             <li><a href="layout-nav-top.html">Navigation Top</a></li>
                             <li><a href="layout-nav-right.html">Navigation Right</a></li>
-                            <li><a href="layout-nav-top-fixed.html">Top Navigation Fixed</a></li>                            
+                            <li><a href="layout-nav-top-fixed.html">Top Navigation Fixed</a></li>
                             <li><a href="layout-nav-custom.html">Custom Navigation</a></li>
                             <li><a href="layout-frame-left.html">Frame Left Column</a></li>
                             <li><a href="layout-frame-right.html">Frame Right Column</a></li>
@@ -148,21 +160,21 @@
                     </li>
                     <li class="xn-title">Components</li>
                     <li class="xn-openable">
-                        <a href="#"><span class="fa fa-cogs"></span> <span class="xn-text">UI Kits</span></a>                        
+                        <a href="#"><span class="fa fa-cogs"></span> <span class="xn-text">UI Kits</span></a>
                         <ul>
-                            <li><a href="ui-widgets.html"><span class="fa fa-heart"></span> Widgets</a></li>                            
+                            <li><a href="ui-widgets.html"><span class="fa fa-heart"></span> Widgets</a></li>
                             <li><a href="ui-elements.html"><span class="fa fa-cogs"></span> Elements</a></li>
-                            <li><a href="ui-buttons.html"><span class="fa fa-square-o"></span> Buttons</a></li>                            
+                            <li><a href="ui-buttons.html"><span class="fa fa-square-o"></span> Buttons</a></li>
                             <li><a href="ui-panels.html"><span class="fa fa-pencil-square-o"></span> Panels</a></li>
                             <li><a href="ui-icons.html"><span class="fa fa-magic"></span> Icons</a><div class="informer informer-warning">+679</div></li>
                             <li><a href="ui-typography.html"><span class="fa fa-pencil"></span> Typography</a></li>
                             <li><a href="ui-portlet.html"><span class="fa fa-th"></span> Portlet</a></li>
                             <li><a href="ui-sliders.html"><span class="fa fa-arrows-h"></span> Sliders</a></li>
-                            <li><a href="ui-alerts-popups.html"><span class="fa fa-warning"></span> Alerts & Popups</a></li>                            
+                            <li><a href="ui-alerts-popups.html"><span class="fa fa-warning"></span> Alerts & Popups</a></li>
                             <li><a href="ui-lists.html"><span class="fa fa-list-ul"></span> Lists</a></li>
                             <li><a href="ui-tour.html"><span class="fa fa-random"></span> Tour</a></li>
                         </ul>
-                    </li>                    
+                    </li>
                     <li class="xn-openable">
                         <a href="#"><span class="fa fa-pencil"></span> <span class="xn-text">Forms</span></a>
                         <ul>
@@ -174,7 +186,7 @@
                                     <li><a href="form-layouts-two-column.html"><span class="fa fa-th-large"></span> Two Column</a></li>
                                     <li><a href="form-layouts-tabbed.html"><span class="fa fa-table"></span> Tabbed</a></li>
                                     <li><a href="form-layouts-separated.html"><span class="fa fa-th-list"></span> Separated Rows</a></li>
-                                </ul> 
+                                </ul>
                             </li>
                             <li><a href="form-elements.html"><span class="fa fa-file-text-o"></span> Elements</a></li>
                             <li><a href="form-validation.html"><span class="fa fa-list-alt"></span> Validation</a></li>
@@ -185,10 +197,10 @@
                     </li>
                     <li class="xn-openable">
                         <a href="tables.html"><span class="fa fa-table"></span> <span class="xn-text">Tables</span></a>
-                        <ul>                            
+                        <ul>
                             <li><a href="table-basic.html"><span class="fa fa-align-justify"></span> Basic</a></li>
                             <li><a href="table-datatables.html"><span class="fa fa-sort-alpha-desc"></span> Data Tables</a></li>
-                            <li><a href="table-export.html"><span class="fa fa-download"></span> Export Tables</a></li>                            
+                            <li><a href="table-export.html"><span class="fa fa-download"></span> Export Tables</a></li>
                         </ul>
                     </li>
                     <li class="xn-openable">
@@ -199,13 +211,13 @@
                             <li><a href="charts-rickshaw.html"><span class="xn-text">Rickshaw</span></a></li>
                             <li><a href="charts-other.html"><span class="xn-text">Other</span></a></li>
                         </ul>
-                    </li>                    
+                    </li>
                     <li>
                         <a href="maps.html"><span class="fa fa-map-marker"></span> <span class="xn-text">Maps</span></a>
-                    </li>                    
+                    </li>
                     <li class="xn-openable">
                         <a href="#"><span class="fa fa-sitemap"></span> <span class="xn-text">Navigation Levels</span></a>
-                        <ul>                            
+                        <ul>
                             <li class="xn-openable">
                                 <a href="#">Second Level</a>
                                 <ul>
@@ -221,10 +233,10 @@
                                         </ul>
                                     </li>
                                 </ul>
-                            </li>                            
+                            </li>
                         </ul>
                     </li>
-                    
+
                 </ul>
                 <!-- END X-NAVIGATION -->
             </div>
