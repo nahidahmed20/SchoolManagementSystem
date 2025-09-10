@@ -6,9 +6,10 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PermissionController;
+use App\Http\Controllers\backend\ClassController;
 use App\Http\Controllers\backend\SchoolController;
 use App\Http\Controllers\backend\TeacherController;
-use App\Http\Controllers\backend\ClassController;
+use App\Http\Controllers\backend\SubjectController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -49,6 +50,8 @@ Route::middleware('auth')->group(function () {
     Route::resource('teachers',TeacherController::class);
 
     Route::resource('classes',ClassController::class);
+
+    Route::resource('subjects',SubjectController::class);
 });
 
 require __DIR__.'/auth.php';
