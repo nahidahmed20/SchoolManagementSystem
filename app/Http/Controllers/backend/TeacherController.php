@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Routing\Controllers\Middleware;
 use Illuminate\Routing\Controllers\HasMiddleware;
 
@@ -89,7 +90,7 @@ class TeacherController extends Controller implements HasMiddleware
             'address'           => $request->address,
             'note'              => $request->note,
             'image'             => $imageUrl,
-            'password'          => $request->password,
+            'password'          => Hash::make($request->password),
             'is_admin'          => 4,
             'created_by'        => Auth::user()->id,
             'status'            => $request->status,
@@ -184,7 +185,6 @@ class TeacherController extends Controller implements HasMiddleware
             $teacher->password = bcrypt($request->password);
         }
 
-        $teacher->created_by = Auth::user()->id;
         $teacher->save();
 
         flash()->success('Teacher has been updated successfully!');

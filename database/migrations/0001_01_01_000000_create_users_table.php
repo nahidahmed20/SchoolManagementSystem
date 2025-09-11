@@ -15,8 +15,14 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('last_name',100)->nullable();
-            $table->string('email')->unique();
+            $table->string('email')->unique()->nullable();;
             $table->string('password');
+            $table->string('admission_number')->nullable();
+            $table->integer('roll_number')->nullable();
+            $table->string('class_id')->nullable();
+            $table->string('caste')->nullable();
+            $table->string('religion')->nullable();
+            $table->date('admission_date')->nullable();
             $table->string('gender',100)->nullable();
             $table->string('date_of_birth',100)->nullable();
             $table->string('date_of_joining',100)->nullable();

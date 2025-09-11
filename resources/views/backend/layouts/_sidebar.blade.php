@@ -101,6 +101,18 @@
                 </ul>
             </li>
         @endcan
+
+        @can('view student')
+            <li class="xn-openable {{ request()->is('students*') ? 'active' : '' }}">
+                <a href="#">
+                    <span class="fa fa-users"></span> <span class="xn-text">Student</span>
+                </a>
+                <ul>
+                    <li class="{{ request()->routeIs('students.index') ? 'active' : '' }}"><a href="{{route('students.index')}}"><span class="fa fa-image"></span> Student List</a></li>
+                    <li class="{{ request()->routeIs('students.create') ? 'active' : '' }}"><a href="{{route('students.create')}}"><span class="fa fa-user"></span> Student Create</a></li>
+                </ul>
+            </li>
+        @endcan
     </ul>
     <!-- END X-NAVIGATION -->
 </div>

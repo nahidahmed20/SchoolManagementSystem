@@ -40,6 +40,12 @@ class User extends Authenticatable
         'is_admin',
         'created_by',
         'status',
+        'admission_number',
+        'roll_number',
+        'class_id',
+        'caste',
+        'religion',
+        'admission_date',
     ];
 
     /**

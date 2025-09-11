@@ -8,8 +8,9 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\backend\ClassController;
 use App\Http\Controllers\backend\SchoolController;
-use App\Http\Controllers\backend\TeacherController;
+use App\Http\Controllers\backend\StudentController;
 use App\Http\Controllers\backend\SubjectController;
+use App\Http\Controllers\backend\TeacherController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -52,6 +53,8 @@ Route::middleware('auth')->group(function () {
     Route::resource('classes',ClassController::class);
 
     Route::resource('subjects',SubjectController::class);
+
+    Route::resource('students',StudentController::class);
 });
 
 require __DIR__.'/auth.php';
