@@ -21,7 +21,9 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'last_name',
+        'parent_id',
         'email',
+        'occupation',
         'gender',
         'date_of_birth',
         'date_of_joining',
@@ -44,6 +46,8 @@ class User extends Authenticatable
         'roll_number',
         'class_id',
         'caste',
+        'height',
+        'weight',
         'religion',
         'admission_date',
     ];
@@ -69,5 +73,20 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function classes()
+    {
+        return $this->belongsTo(Classes::class, 'class_id', 'id');
+    }
+
+    public function students()
+    {
+        return $this->hasMany(User::class, 'parent_id');
+    }
+
+    public function parent()
+    {
+        return $this->belongsTo(User::class, 'parent_id');
     }
 }

@@ -15,7 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('last_name',100)->nullable();
-            $table->string('email')->unique()->nullable();;
+            $table->unsignedBigInteger('parent_id')->nullable();
+            $table->string('email')->unique()->nullable();
+            $table->string('occupation')->nullable();
             $table->string('password');
             $table->string('admission_number')->nullable();
             $table->integer('roll_number')->nullable();
@@ -24,11 +26,13 @@ return new class extends Migration
             $table->string('religion')->nullable();
             $table->date('admission_date')->nullable();
             $table->string('gender',100)->nullable();
-            $table->string('date_of_birth',100)->nullable();
-            $table->string('date_of_joining',100)->nullable();
+            $table->date('date_of_birth')->nullable();
+            $table->date('date_of_joining')->nullable();
             $table->string('designation',100)->nullable();
             $table->string('department',100)->nullable();
             $table->string('number',100)->nullable();
+            $table->integer('height')->nullable();
+            $table->integer('weight')->nullable();
             $table->string('marital_status',100)->nullable();
             $table->string('qualification',100)->nullable();
             $table->string('work_experience',100)->nullable();

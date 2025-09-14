@@ -147,7 +147,7 @@
                             <div class="col-md-6">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-phone"></i></span>
-                                    <input type="text" name="number" value="{{ old('number') }}" class="form-control">
+                                    <input type="number" name="number" value="{{ old('number') }}" class="form-control">
                                 </div>
                                 @error('number') <span class="text-danger">{{ $message }}</span> @enderror
                             </div>
@@ -159,9 +159,9 @@
                             <div class="col-md-6">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-building"></i></span>
-                                    <input type="date" name="adminssion_date" value="{{ old('adminssion_date') }}" class="form-control">
+                                    <input type="date" name="admission_date" value="{{ old('admission_date') }}" class="form-control">
                                 </div>
-                                @error('adminssion_date') <span class="text-danger">{{ $message }}</span> @enderror
+                                @error('admission_date') <span class="text-danger">{{ $message }}</span> @enderror
                             </div>
                         </div>
 
@@ -183,7 +183,7 @@
                             <div class="col-md-6">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-briefcase"></i></span>
-                                    <input type="text" name="height" value="{{ old('height') }}" class="form-control">
+                                    <input type="number" name="height" value="{{ old('height') }}" class="form-control">
                                 </div>
                                 @error('height') <span class="text-danger">{{ $message }}</span> @enderror
                             </div>
@@ -195,7 +195,7 @@
                             <div class="col-md-6">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-briefcase"></i></span>
-                                    <input type="text" name="weight" value="{{ old('weight') }}" class="form-control">
+                                    <input type="number" name="weight" value="{{ old('weight') }}" class="form-control">
                                 </div>
                                 @error('weight') <span class="text-danger">{{ $message }}</span> @enderror
                             </div>

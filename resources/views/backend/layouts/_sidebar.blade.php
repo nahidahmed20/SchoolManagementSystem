@@ -1,4 +1,4 @@
-<div class="page-sidebar pb-4">
+<div class="page-sidebar pb-5">
     <!-- START X-NAVIGATION -->
     <ul class="x-navigation">
         <li class="xn-logo">
@@ -69,7 +69,7 @@
         @can('view teacher')
             <li class="xn-openable {{ request()->is('teachers*') ? 'active' : '' }}">
                 <a href="#">
-                    <span class="fa fa-user-graduate"></span> <span class="xn-text">Teacher</span>
+                    <span class="fa fa-user"></span> <span class="xn-text">Teacher</span>
                 </a>
                 <ul>
                     <li class="{{ request()->routeIs('teachers.index') ? 'active' : '' }}"><a href="{{route('teachers.index')}}"><span class="fa fa-image"></span> Teacher List</a></li>
@@ -113,6 +113,25 @@
                 </ul>
             </li>
         @endcan
+
+        @can('view parent')
+            <li class="xn-openable {{ request()->is('parents*') ? 'active' : '' }}">
+                <a href="#">
+                    <span class="fa fa-users"></span> <span class="xn-text">Parent</span>
+                </a>
+                <ul>
+                    <li class="{{ request()->routeIs('parents.index') ? 'active' : '' }}"><a href="{{route('parents.index')}}"><span class="fa fa-image"></span> Parent List</a></li>
+                    <li class="{{ request()->routeIs('parents.create') ? 'active' : '' }}"><a href="{{route('parents.create')}}"><span class="fa fa-user"></span> Parent Create</a></li>
+                </ul>
+            </li>
+        @endcan
     </ul>
     <!-- END X-NAVIGATION -->
+    <div class="sidebar-logo text-center py-3">
+        <img src="{{ asset('backend/img/school-logo.png') }}" 
+             alt="School Logo" 
+             style="max-width: 50px; height:50; margin-top:10px">
+    </div>
 </div>
+
+

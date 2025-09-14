@@ -16,8 +16,8 @@ class StudentController extends Controller
      */
     public function index()
     {
-        $students = User::where('is_admin',5)->get();
-
+        $students = User::where('is_admin', 5)->with('classes')->get();
+        // dd($students);
         return view('backend.student.index',compact('students'));
     }
 
@@ -72,11 +72,11 @@ class StudentController extends Controller
             'roll_number'       => $request->roll_number,
             'gender'            => $request->gender,
             'date_of_birth'     => $request->date_of_birth,
-            'class'             => $request->class,
+            'class_id'          => $request->class_id,
             'caste'             => $request->caste,
             'religion'          => $request->religion,
             'number'            => $request->number,
-            'adminssion_date'   => $request->adminssion_date,
+            'admission_date'   => $request->admission_date,
             'blood_group'       => $request->blood_group,
             'height'            => $request->height,
             'weight'            => $request->weight,
@@ -108,7 +108,7 @@ class StudentController extends Controller
      */
     public function edit(string $id)
     {
-        $student = User::findOfFail($id);
+        $student = User::findOrFail($id);
         $classes = Classes::where('status',1)->get();
 
         return view('backend.student.edit',compact('student','classes'));
@@ -124,15 +124,15 @@ class StudentController extends Controller
         $request->validate([
             'name'              => 'required|string|max:255',
             'last_name'         => 'nullable|string|max:255',
-            'admission_number'  => 'required|integer|unique:students,admission_number,' . $student->id,
-            'roll_number'       => 'nullable|integer|unique:students,roll_number,' . $student->id,
+            'admission_number'  => 'required',
+            'roll_number'       => 'nullable' ,
             'gender'            => 'required|in:Male,Female,Other',
             'date_of_birth'     => 'required|date|before:today',
             'class_id'          => 'required',
             'caste'             => 'nullable|string|max:255',
             'religion'          => 'nullable|string|max:255',
             'number'            => 'required|string|max:20',
-            'adminssion_date'   => 'required|date',
+            'admission_date'    => 'required|date',
             'blood_group'       => 'nullable|in:A+,A-,B+,B-,O+,O-,AB+,AB-',
             'height'            => 'nullable|string|max:50',
             'weight'            => 'nullable|string|max:50',
@@ -146,7 +146,7 @@ class StudentController extends Controller
 
         $data = $request->only([
             'name','last_name','admission_number','roll_number','gender',
-            'date_of_birth','class_id','caste','religion','number','adminssion_date',
+            'date_of_birth','class_id','caste','religion','number','admission_date',
             'blood_group','height','weight','nationality','address','note','status'
         ]);
 
