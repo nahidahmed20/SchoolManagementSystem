@@ -1,5 +1,5 @@
 @extends('backend.layouts.app')
-@section('title','Subject List | School Management System')
+@section('title','Class Subject List | School Management System')
 @section('content')
 
 <style>
@@ -18,15 +18,15 @@
 <ul class="breadcrumb">
     <li><a href="{{route('dashboard')}}">Home</a></li>
     <li><a href="#">Tables</a></li>
-    <li class="active">Subject</li>
+    <li class="active">Class Subject</li>
 </ul>
 <!-- END BREADCRUMB -->
 
 <!-- PAGE TITLE -->
 <div class="page-title" style="display: flex; justify-content: space-between; align-items: center;">
     <h2><span class="fa fa-arrow-circle-o-left"></span> School Table</h2>
-    @can('create subject')
-        <a href="{{ route('subjects.create') }}" class="btn btn-success">
+    @can('create class-subject')
+        <a href="{{ route('class-subjects.create') }}" class="btn btn-success">
             <i class="fa fa-plus"></i> Create
         </a>
     @endcan
@@ -37,24 +37,26 @@
         <div class="col-md-12">
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <table id="subjectTable" class="table table-striped table-bordered nowrap" style="width:100%">
+                    <table id="classSubjectTable" class="table table-striped table-bordered nowrap" style="width:100%">
                         <thead>
                             <tr>
                                 <th>#SL</th>
+                                <th>Class Name</th>
                                 <th>Subject Name</th>
                                 <th>Type</th>
                                 <th>Status</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
-                            @foreach($subjects as $subject)
+                            @foreach($classSubjects as $class_subject)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $subject->name }}</td>
-                                    <td>{{ $subject->type }}</td>
+                                    <td>{{ $class_subject->classRelation->name }}</td>
+                                    <td>{{ $class_subject->subject->name }}</td>
+                                    <td>{{ $class_subject->subject->type }}</td>
                                     <td>
                                         <div style="display: flex; gap: 5px; align-items: center;">
-                                            @if($subject->status == 1)
+                                            @if($class_subject->status == 1)
                                                 <span class="badge badge-success">Active</span>
                                             @else
                                                 <span class="badge badge-danger">Inactive</span>
@@ -63,13 +65,13 @@
                                     </td>
                                     <td>
                                         <div style="display: flex; gap: 5px; align-items: center;">
-                                            @can('edit subject')
-                                                <a href="{{ route('subjects.edit', $subject->id) }}" class="btn btn-info btn-sm">
+                                            @can('edit class-subject')
+                                                <a href="{{ route('class-subjects.edit', $class_subject->id) }}" class="btn btn-info btn-sm">
                                                     <i class="fa fa-pencil"></i> Edit
                                                 </a>
                                             @endcan
-                                            @can('delete subject')
-                                                <form method="POST" action="{{ route('subjects.destroy', $subject->id) }}" class="delete-form">    
+                                            @can('delete class-subject')
+                                                <form method="POST" action="{{ route('class-subjects.destroy', $class_subject->id) }}" class="delete-form">    
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="button" class="btn btn-danger btn-sm delete-btn">
@@ -119,7 +121,7 @@
 
 <script>
 $(document).ready(function() {
-    $('#subjectTable').DataTable({
+    $('#classSubjectTable').DataTable({
         responsive: true,
         lengthChange: true, // show "Show entries" dropdown
         pageLength: 10,     // default entries

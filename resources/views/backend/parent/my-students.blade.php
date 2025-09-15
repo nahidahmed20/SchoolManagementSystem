@@ -67,9 +67,12 @@
                                                 </a>
                                             @endcan
                                             @can('mystudent.parent')
-                                                <a href="{{ route('parents.addMyStudent',['student_id' => $st->id, 'parent_id' => $parent->id]) }}" class="btn btn-warning btn-sm">
-                                                    <i class="fa fa-user-plus"></i> Add This
-                                                </a>
+                                                 @if(!$st->parent) 
+                                                    <a href="{{ route('parents.addMyStudent',['student_id' => $st->id, 'parent_id' => $parent->id]) }}" 
+                                                    class="btn btn-warning btn-sm">
+                                                        <i class="fa fa-user-plus"></i> Add This
+                                                    </a>
+                                                @endif
                                             @endcan
                                         </div>
                                     </td>

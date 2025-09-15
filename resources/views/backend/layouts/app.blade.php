@@ -12,6 +12,8 @@
         
         <!-- CSS INCLUDE -->        
         <link rel="stylesheet" type="text/css" id="theme" href="{{asset('backend/css/theme-default.css')}}"/>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
+
         <!-- EOF CSS INCLUDE -->     
                                      
     </head>
@@ -99,6 +101,14 @@
         <script type="text/javascript" src="{{asset('backend/js/actions.js')}}"></script>
         
         <script type="text/javascript" src="{{asset('backend/js/demo_dashboard.js')}}"></script>
+        <!-- Select2 JS -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
+
+        <script>
+            $(document).ready(function(){
+                $('.selectpicker').selectpicker();
+            });
+        </script>
         <!-- END TEMPLATE -->
         <!-- END SCRIPTS --> 
         @yield('scripts') 

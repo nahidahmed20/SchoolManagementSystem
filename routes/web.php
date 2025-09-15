@@ -7,6 +7,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\backend\ClassController;
+use App\Http\Controllers\backend\ClassSubjectController;
 use App\Http\Controllers\backend\ParentController;
 use App\Http\Controllers\backend\SchoolController;
 use App\Http\Controllers\backend\StudentController;
@@ -53,6 +54,8 @@ Route::middleware('auth')->group(function () {
     Route::resource('classes',ClassController::class);
 
     Route::resource('subjects',SubjectController::class);
+
+    Route::resource('class-subjects',ClassSubjectController::class);
 
     Route::resource('students',StudentController::class);
 

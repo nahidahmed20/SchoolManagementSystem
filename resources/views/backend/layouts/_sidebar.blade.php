@@ -102,6 +102,18 @@
             </li>
         @endcan
 
+        @can('view class-subject')
+            <li class="xn-openable {{ request()->is('class-subjects*') ? 'active' : '' }}">
+                <a href="#">
+                    <span class="fa fa-book"></span> <span class="xn-text">Class Subject</span>
+                </a>
+                <ul>
+                    <li class="{{ request()->routeIs('class-subjects.index') ? 'active' : '' }}"><a href="{{route('class-subjects.index')}}"><span class="fa fa-image"></span> Class Subject List</a></li>
+                    <li class="{{ request()->routeIs('class-subjects.create') ? 'active' : '' }}"><a href="{{route('class-subjects.create')}}"><span class="fa fa-user"></span> Class Subject Create</a></li>
+                </ul>
+            </li>
+        @endcan
+
         @can('view student')
             <li class="xn-openable {{ request()->is('students*') ? 'active' : '' }}">
                 <a href="#">
