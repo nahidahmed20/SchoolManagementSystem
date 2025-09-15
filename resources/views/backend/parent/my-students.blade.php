@@ -67,7 +67,7 @@
                                                 </a>
                                             @endcan
                                             @can('mystudent.parent')
-                                                <a href="{{ route('parents.mystudents', $st->id) }}" class="btn btn-warning btn-sm">
+                                                <a href="{{ route('parents.addMyStudent',['student_id' => $st->id, 'parent_id' => $parent->id]) }}" class="btn btn-warning btn-sm">
                                                     <i class="fa fa-user-plus"></i> Add This
                                                 </a>
                                             @endcan
@@ -82,8 +82,57 @@
         </div>
     </div>
 </div>
+
 <hr style="border: 1px solid #333; margin: 0;">
 
+<div class="page-content-wrap">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <table id="parentsTable" class="table table-striped table-bordered nowrap" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th>#SL</th>
+                                <th>Full Name</th>
+                                <th>Gender</th>
+                                <th>Date of Birth</th>
+                                <th>Admission No</th>
+                                <th>Roll No</th>
+                                <th>Class</th>
+                                <th>Blood Group</th>
+                                {{-- <th style="text-align: center;">Action</th> --}}
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($students as $stu)
+                                <tr>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $stu->name }} {{ $stu->last_name }}</td>
+                                    <td>{{ $stu->gender }}</td>
+                                    <td>{{ $stu->date_of_birth }}</td>
+                                    <td>{{ $stu->admission_number }}</td>
+                                    <td>{{ $stu->roll_number }}</td>
+                                    <td>{{ $stu->classes->name  }}</td>
+                                    <td>{{ $stu->blood_group }}</td>
+                                    {{-- <td>
+                                        <div style="display: flex; justify-content: center; gap: 5px; align-items: center;">
+                                            @can('edit.parent')
+                                                <a href="{{ route('parents.edit', $stu->id) }}" class="btn btn-info btn-sm">
+                                                    <i class="fa fa-pencil"></i> Edit
+                                                </a>
+                                            @endcan
+                                        </div>
+                                    </td> --}}
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>                                    
+                </div>
+            </div>                            
+        </div>
+    </div>
+</div>
 @endsection
 
 @section('scripts')

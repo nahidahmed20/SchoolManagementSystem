@@ -17,4 +17,3 @@
     <script src="{{asset('frontend/assets/js/ScrollTrigger.min.js')}}"></script>
     <script src="{{asset('frontend/assets/js/SplitText.min.js')}}"></script>
     <script src="{{asset('frontend/assets/js/main.js')}}"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>

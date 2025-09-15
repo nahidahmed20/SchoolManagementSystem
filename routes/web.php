@@ -58,6 +58,7 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('parents',ParentController::class);
     Route::get('/parents/mystudents/{parent}', [ParentController::class, 'myStudents'])->name('parents.mystudents');
+    Route::get('/add/mystudent/{student_id}/{parent_id}', [ParentController::class, 'addMyStudent'])->name('parents.addMyStudent');
 });
 
 require __DIR__.'/auth.php';

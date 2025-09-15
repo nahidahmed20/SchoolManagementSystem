@@ -8,7 +8,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Learna - Education HTML Template">
-
     <!-- ========== Page Title ========== -->
     <title>Learna - Education HTML Template</title>
 
@@ -951,8 +950,13 @@
                             </div>
                             <div class="thumb wow fadeInUp" data-wow-delay="400ms">
                                 <img src="{{asset('frontend/assets/img/thumb/18.jpg')}}" alt="Image Not Found">
-                                <a href="https://www.youtube.com/watch?v=pv648_qOz94" class="popup-youtube video-play-button"><i class="fas fa-play"></i></a>
+                                <a href="https://www.youtube.com/watch?v=pv648_qOz94" class="popup-youtube video-play-button">
+                                    {{-- <i class="fa-solid fa-play"></i> --}}
+                                    <i class="fas fa-play"></i>
+
+                                </a>
                             </div>
+                            
                         </div>
                     </div>
                 </div>
@@ -963,7 +967,8 @@
                         <ul class="list-style-five wow fadeInUp" data-wow-delay="300ms">
                             <li>
                                 <div class="icon">
-                                    <i class="fas fa-map-marker-alt"></i>
+                                    {{-- <i class="fas fa-map-marker"></i> --}}
+                                    <i class="fa-solid fa-map-pin"></i>
                                 </div>
                                 <div class="info">
                                     <h4>Learn from Anywhere</h4>
@@ -974,7 +979,7 @@
                             </li>
                             <li>
                                 <div class="icon">
-                                    <i class="fas fa-book-open"></i>
+                                    <i class="fab fa-facebook-f"></i>
                                 </div>
                                 <div class="info">
                                     <h4>Flexible Classes</h4>

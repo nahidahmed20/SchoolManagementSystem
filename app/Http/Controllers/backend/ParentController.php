@@ -29,6 +29,18 @@ class ParentController extends Controller
         
         return view('backend.parent.my-students', compact('studentLists','parent','students'));
     }
+
+    public function addMyStudent($student, $parent)
+    {
+        $student = User::find($student);
+        $student->parent_id = $parent;
+        $student->save();
+        
+        flash()->success('Parent has been added successfully!');
+
+        return redirect()->back();
+    }
+
     /**
      * Show the form for creating a new resource.
      */

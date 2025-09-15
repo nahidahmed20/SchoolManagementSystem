@@ -35,6 +35,7 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->all());
         $request->validate([
             'name'              => 'required|string|max:255',
             'last_name'         => 'nullable|string|max:255',
@@ -46,7 +47,7 @@ class StudentController extends Controller
             'caste'             => 'nullable|string|max:255',
             'religion'          => 'nullable|string|max:255',
             'number'            => 'required|string|max:20',
-            'adminssion_date'   => 'required|date',
+            'admission_date'    => 'required|date',
             'blood_group'       => 'nullable',
             'height'            => 'nullable|string|max:50',
             'weight'            => 'nullable|string|max:50',
