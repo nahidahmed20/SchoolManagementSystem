@@ -12,10 +12,9 @@ use App\Http\Controllers\backend\SchoolController;
 use App\Http\Controllers\backend\StudentController;
 use App\Http\Controllers\backend\SubjectController;
 use App\Http\Controllers\backend\TeacherController;
+use App\Http\Controllers\frontend\HomeController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/',[HomeController::class, 'index'] )->name('home');
 
 Route::get('/dashboard', function () {
     return view('backend.dashboard');
