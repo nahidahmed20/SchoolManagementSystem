@@ -18,7 +18,7 @@ class ClassSubjectController extends Controller
      */
     public function index()
     {
-        $classSubjects = ClassSubject::with(['classRelation','subject'])->get();
+        $classSubjects = ClassSubject::with(['classRelation','subject'])->orderByDesc('id')->get();
         return view('backend.class_subject.index', compact('classSubjects'));
     }
 
@@ -38,36 +38,47 @@ class ClassSubjectController extends Controller
      */
     public function store(Request $request)
     {
-       
-        $request->validate([
-            "class_id"   => "required",
-            "subject_id" => "required",
-            "status"     => "required"
+        $validated = $request->validate([
+            'class_id'     => 'required|integer|exists:classes,id',
+            'subject_id'   => 'required|array',                 // array of IDs
+            'subject_id.*' => 'integer|exists:subjects,id',   // each must exist
+            'status'       => 'required|in:0,1',                // example status rule
         ]);
 
-        // Check duplicate
-        $exists = ClassSubject::where('class_id', $request->class_id)
-                    ->where('subject_id', $request->subject_id)
-                    ->exists();
+        $createdCount = 0;
 
-        if ($exists) {
+        foreach ($validated['subject_id'] as $subjectId) {
+            // Skip if already assigned
+            $exists = ClassSubject::where('class_id', $validated['class_id'])
+                ->where('subject_id', $subjectId)
+                ->exists();
+
+            if ($exists) {
+                continue; // or collect duplicates if you want to show them
+            }
+
+            ClassSubject::create([
+                'class_id'   => $validated['class_id'],
+                'subject_id' => $subjectId,
+                'status'     => $validated['status'],
+                'created_by' => Auth::id(),
+            ]);
+
+            $createdCount++;
+        }
+
+        if ($createdCount === 0) {
             return redirect()
                 ->back()
-                ->with('error', 'This subject is already assigned to this class.')
+                ->with('error', 'All selected subjects were already assigned to this class.')
                 ->withInput();
         }
 
-        ClassSubject::create([
-            "class_id"   => $request->class_id,
-            "subject_id" => $request->subject_id,
-            "status"     => $request->status,
-            'created_by' => Auth::user()->id,
-        ]);
-
-        flash("Class Subject Created Successfully");
-        return redirect()->route('class-subjects.index');
+        return redirect()
+            ->route('class-subjects.index')
+            ->with('success', "Class subjects created successfully ({$createdCount} added).");
     }
-    
+
 
     /**
      * Display the specified resource.
@@ -92,36 +103,31 @@ class ClassSubjectController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
-        $request->validate([
-            "class_id"   => "required",
-            "subject_id" => "required",
-            "status"     => "required"
+        $validated = $request->validate([
+            'class_id'    => 'required|integer|exists:classes,id',
+            'subject_id'  => 'required|array',
+            'subject_id.*'=> 'integer|exists:subjects,id',
+            'status'      => 'required|in:0,1',
         ]);
-
-        $exists = ClassSubject::where('class_id', $request->class_id)
-            ->where('subject_id', $request->subject_id)
-            ->where('id', '!=', $id)
-            ->exists();
-
-        if ($exists) {
-            return redirect()->route('class-subjects.index')
-                ->with('success', 'Class Subject updated successfully.');
-        }
 
         $classSubject = ClassSubject::findOrFail($id);
 
-        $classSubject->update([
-            "class_id"   => $request->class_id,
-            "subject_id" => $request->subject_id,
-            "status"     => $request->status,
-            'updated_by' => Auth::id(),
-        ]);
+        ClassSubject::where('class_id', $validated['class_id'])->delete();
 
-        
-        return redirect()->route('class-subjects.index')
-            ->with('success', 'Class Subject updated successfully.');
+        foreach ($validated['subject_id'] as $subjectId) {
+            ClassSubject::create([
+                'class_id'   => $validated['class_id'],
+                'subject_id' => $subjectId,
+                'status'     => $validated['status'],
+                'created_by' => Auth::id(),
+            ]);
+        }
+
+        return redirect()
+            ->route('class-subjects.index')
+            ->with('success', 'Class subjects updated successfully.');
     }
 
 

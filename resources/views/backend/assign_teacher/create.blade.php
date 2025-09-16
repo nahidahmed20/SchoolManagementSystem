@@ -1,20 +1,20 @@
 @extends('backend.layouts.app')
-@section('title','Class Subject Create | School Management System')
+@section('title','Assign Teacher Class Create | School Management System')
 @section('content')
 
 <div class="page-content-wrap">
     <div class="row">
         <div class="col-md-12">
 
-            <!-- Create Class Subject Form -->
-            <form action="{{ route('class-subjects.store') }}" method="POST" enctype="multipart/form-data">
+            <!-- Create Assign Teacher Class Form -->
+            <form action="{{ route('class-teachers.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h3 class="panel-title"><strong>Create</strong> Class Subject</h3>
+                        <h3 class="panel-title"><strong>Create</strong> Assign Teacher Class</h3>
                         <ul class="panel-controls">
                             <li>
-                                <a href="{{ route('class-subjects.index') }}" title="Back to Class Subject List">
+                                <a href="{{ route('class-teachers.index') }}" title="Back to Assign Teacher Class List">
                                     <span class="fa fa-list"></span>
                                 </a>
                             </li>
@@ -37,30 +37,30 @@
                             </div>
                         </div>
 
-                        <!-- Subject Name -->
+                        <!-- Teacher Name -->
                         <div class="form-group row">
-                            <label class="col-md-3 control-label">Subject Name</label>
+                            <label class="col-md-3 control-label">Teacher Name</label>
 
                             <div class="col-md-6">
-                                @foreach($subjects as $subject)
+                                @foreach($teachers as $teacher)
                                     <div class="form-check mb-1">
                                         <input
                                             type="checkbox"
-                                            name="subject_id[]"
-                                            id="subject_{{ $subject->id }}"
-                                            value="{{ $subject->id }}"
+                                            name="teacher_id[]"
+                                            id="teacher_{{ $teacher->id }}"
+                                            value="{{ $teacher->id }}"
                                             class="form-check-input"
                                             {{-- keep old checked values if validation fails --}}
-                                            {{ in_array($subject->id, old('subject_id', [])) ? 'checked' : '' }}
-                                            
+                                            {{ in_array($teacher->id, old('teacher_id', [])) ? 'checked' : '' }}
+
                                         >
-                                        <label class="form-check-label" for="subject_{{ $subject->id }}">
-                                            {{ $subject->name }} – {{ $subject->type }}
+                                        <label class="form-check-label" for="teacher_{{ $teacher->id }}">
+                                            {{ $teacher->name }} {{ $teacher->last_name }}
                                         </label>
                                     </div>
                                 @endforeach
 
-                                @error('subject_id')
+                                @error('teacher_id')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>

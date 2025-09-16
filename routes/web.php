@@ -7,13 +7,14 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\backend\ClassController;
-use App\Http\Controllers\backend\ClassSubjectController;
+use App\Http\Controllers\frontend\HomeController;
 use App\Http\Controllers\backend\ParentController;
 use App\Http\Controllers\backend\SchoolController;
 use App\Http\Controllers\backend\StudentController;
 use App\Http\Controllers\backend\SubjectController;
 use App\Http\Controllers\backend\TeacherController;
-use App\Http\Controllers\frontend\HomeController;
+use App\Http\Controllers\backend\ClassSubjectController;
+use App\Http\Controllers\backend\AssignCalssTeacherController;
 
 Route::get('/',[HomeController::class, 'index'] )->name('home');
 
@@ -56,6 +57,8 @@ Route::middleware('auth')->group(function () {
     Route::resource('subjects',SubjectController::class);
 
     Route::resource('class-subjects',ClassSubjectController::class);
+
+    Route::resource('class-teachers',AssignCalssTeacherController::class);
 
     Route::resource('students',StudentController::class);
 

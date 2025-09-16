@@ -114,6 +114,18 @@
             </li>
         @endcan
 
+        @can('view class-teacher')
+            <li class="xn-openable {{ request()->is('class-teachers*') ? 'active' : '' }}">
+                <a href="#">
+                    <span class="fa fa-book"></span> <span class="xn-text">Assign Class Teacher</span>
+                </a>
+                <ul>
+                    <li class="{{ request()->routeIs('class-teachers.index') ? 'active' : '' }}"><a href="{{route('class-teachers.index')}}"><span class="fa fa-image"></span>Assign Class  List</a></li>
+                    <li class="{{ request()->routeIs('class-teachers.create') ? 'active' : '' }}"><a href="{{route('class-teachers.create')}}"><span class="fa fa-user"></span>Assign Class  Create</a></li>
+                </ul>
+            </li>
+        @endcan
+
         @can('view student')
             <li class="xn-openable {{ request()->is('students*') ? 'active' : '' }}">
                 <a href="#">
@@ -140,8 +152,8 @@
     </ul>
     <!-- END X-NAVIGATION -->
     <div class="sidebar-logo text-center py-3">
-        <img src="{{ asset('backend/img/school-logo.png') }}" 
-             alt="School Logo" 
+        <img src="{{ asset('backend/img/school-logo.png') }}"
+             alt="School Logo"
              style="max-width: 50px; height:50; margin-top:10px">
     </div>
 </div>
