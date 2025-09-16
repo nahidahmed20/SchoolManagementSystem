@@ -26,7 +26,7 @@ class ParentController extends Controller
 
         $parent = User::find($id);
         $students = $parent->students;
-        
+
         return view('backend.parent.my-students', compact('studentLists','parent','students'));
     }
 
@@ -35,7 +35,7 @@ class ParentController extends Controller
         $student = User::find($student);
         $student->parent_id = $parent;
         $student->save();
-        
+
         flash()->success('Parent has been added successfully!');
 
         return redirect()->back();
@@ -84,13 +84,14 @@ class ParentController extends Controller
             'password'    => Hash::make($validated['password']),
             'status'      => $validated['status'],
             'image'       => $imagePath,
-            'is_admin'    => 6, 
+            'is_admin'    => 6,
             'created_by'  => Auth::user()->id,
         ]);
 
         flash()->success('Parent has been created successfully!');
 
         return redirect()->route('parents.index');
+
     }
 
     /**
@@ -98,7 +99,7 @@ class ParentController extends Controller
      */
     public function show(string $id)
     {
-        //
+        
     }
 
     /**

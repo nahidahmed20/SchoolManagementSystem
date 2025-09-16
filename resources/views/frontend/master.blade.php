@@ -956,7 +956,7 @@
 
                                 </a>
                             </div>
-                            
+
                         </div>
                     </div>
                 </div>
@@ -1042,7 +1042,7 @@
                                 <div class="pricing-style-one-item">
                                     <div class="info">
                                         <div class="icon">
-                                            <img src="{{asset('frontend/assets/img/icon/54.html')}}" alt="Image Not Found">
+                                            <img src="{{asset('frontend/assets/img/icon/54.png')}}" alt="Image Not Found">
                                         </div>
                                         <div class="content">
                                             <h4>Basic Plan</h4>
@@ -1063,7 +1063,7 @@
                                 <div class="pricing-style-one-item active">
                                     <div class="info">
                                         <div class="icon">
-                                            <img src="{{asset('frontend/assets/img/icon/55.html')}}" alt="Image Not Found">
+                                            <img src="{{asset('frontend/assets/img/icon/55.png')}}" alt="Image Not Found">
                                         </div>
                                         <div class="content">
                                             <h4>Advanced Plan</h4>
@@ -1084,7 +1084,7 @@
                                 <div class="pricing-style-one-item">
                                     <div class="info">
                                         <div class="icon">
-                                            <img src="{{asset('frontend/assets/img/icon/56.html')}}" alt="Image Not Found">
+                                            <img src="{{asset('frontend/assets/img/icon/56.png')}}" alt="Image Not Found">
                                         </div>
                                         <div class="content">
                                             <h4>Premium Plan</h4>
@@ -1115,7 +1115,7 @@
                                 <div class="pricing-style-one-item">
                                     <div class="info">
                                         <div class="icon">
-                                            <img src="{{asset('frontend/assets/img/icon/54.html')}}" alt="Image Not Found">
+                                            <img src="{{asset('frontend/assets/img/icon/54.png')}}" alt="Image Not Found">
                                         </div>
                                         <div class="content">
                                             <h4>Basic Plan</h4>
@@ -1136,7 +1136,7 @@
                                 <div class="pricing-style-one-item active">
                                     <div class="info">
                                         <div class="icon">
-                                            <img src="{{asset('frontend/assets/img/icon/55.html')}}" alt="Image Not Found">
+                                            <img src="{{asset('frontend/assets/img/icon/55.png')}}" alt="Image Not Found">
                                         </div>
                                         <div class="content">
                                             <h4>Advanced Plan</h4>
@@ -1157,7 +1157,7 @@
                                 <div class="pricing-style-one-item">
                                     <div class="info">
                                         <div class="icon">
-                                            <img src="{{asset('frontend/assets/img/icon/56.html')}}" alt="Image Not Found">
+                                            <img src="{{asset('frontend/assets/img/icon/56.png')}}" alt="Image Not Found">
                                         </div>
                                         <div class="content">
                                             <h4>Premium Plan</h4>
@@ -1191,7 +1191,7 @@
                 <div class="col-lg-4">
                     <div class="testimonial-style-three-info wow fadeInUp">
                         <div class="shape">
-                            <img src="{{asset('frontend/assets/img/illustration/10.html')}}" alt="Image Not Found">
+                            <img src="{{asset('frontend/assets/img/illustration/10.png')}}" alt="Image Not Found">
                         </div>
                         <div class="top-info">
                             <h4 class="sub-title">Testimonials</h4>
@@ -1209,7 +1209,7 @@
                                 </div>
                             </div>
                             <div class="review-provider">
-                                <img src="{{asset('frontend/assets/img/brand/7.html')}}" alt="Image Not Found">
+                                <img src="{{asset('frontend/assets/img/brand/7.png')}}" alt="Image Not Found">
                                 <span>4.9/ 60 Reviews</span>
                             </div>
                         </div>
@@ -1235,7 +1235,7 @@
                                             </div>
                                         </div>
                                         <div class="icon">
-                                            <img src="{{asset('frontend/assets/img/icon/quote.html')}}" alt="Image Not Found">
+                                            <img src="{{asset('frontend/assets/img/icon/quote.png')}}" alt="Image Not Found">
                                         </div>
                                     </div>
                                     <p>
@@ -1269,7 +1269,7 @@
                                             </div>
                                         </div>
                                         <div class="icon">
-                                            <img src="{{asset('frontend/assets/img/icon/quote.html')}}" alt="Image Not Found">
+                                            <img src="{{asset('frontend/assets/img/icon/quote.png')}}" alt="Image Not Found">
                                         </div>
                                     </div>
                                     <p>
@@ -1303,7 +1303,7 @@
                                             </div>
                                         </div>
                                         <div class="icon">
-                                            <img src="{{asset('frontend/assets/img/icon/quote.html')}}" alt="Image Not Found">
+                                            <img src="{{asset('frontend/assets/img/icon/quote.png')}}" alt="Image Not Found">
                                         </div>
                                     </div>
                                     <p>
@@ -1338,7 +1338,7 @@
                 <div class="col-lg-6">
                     <div class="join-us-style-one-item bg-gradient wow fadeInUp">
                         <div class="shape">
-                            <img src="{{asset('frontend/assets/img/shape/52.html')}}" alt="Image Not Found">
+                            <img src="{{asset('frontend/assets/img/shape/52.png')}}" alt="Image Not Found">
                         </div>
                         <div class="info">
                             <span>Join us today</span>
@@ -1349,14 +1349,14 @@
                             <a class="btn circle btn-sm btn-light animation" href="contact-us.html">Apply Now</a>
                         </div>
                         <div class="thumb">
-                            <img src="{{asset('frontend/assets/img/illustration/7.html')}}" alt="Image Not Found">
+                            <img src="{{asset('frontend/assets/img/illustration/7.png')}}" alt="Image Not Found">
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <div class="join-us-style-one-item bg-dark active wow fadeInUp" data-wow-delay="300ms">
                         <div class="shape">
-                            <img src="{{asset('frontend/assets/img/shape/52.html')}}" alt="Image Not Found">
+                            <img src="{{asset('frontend/assets/img/shape/52.png')}}" alt="Image Not Found">
                         </div>
                         <div class="info">
                             <span>Start learning</span>
@@ -1367,7 +1367,7 @@
                             <a class="btn btn-sm btn-theme circle animation" href="contact-us.html">Apply Now</a>
                         </div>
                         <div class="thumb">
-                            <img src="{{asset('frontend/assets/img/illustration/8.html')}}" alt="Image Not Found">
+                            <img src="{{asset('frontend/assets/img/illustration/8.png')}}" alt="Image Not Found">
                         </div>
                     </div>
                 </div>
