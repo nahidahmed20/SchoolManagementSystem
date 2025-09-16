@@ -59,6 +59,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('class-subjects',ClassSubjectController::class);
 
     Route::resource('class-teachers',AssignCalssTeacherController::class);
+    Route::get('/class-subject/show', [AssignCalssTeacherController::class, 'classSubjectShow'])->name('my-classes.index');
 
     Route::resource('students',StudentController::class);
 

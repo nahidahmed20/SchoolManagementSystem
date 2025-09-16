@@ -5,6 +5,7 @@ namespace App\Http\Controllers\backend;
 use App\Models\Classes;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Routing\Controllers\Middleware;
 use Illuminate\Routing\Controllers\HasMiddleware;
 
@@ -48,8 +49,10 @@ class ClassController extends Controller implements HasMiddleware
 
         Classes::create([
             'name'      => $request->name,
-            'status'    => $request->status,
+            'created_by'      => Auth::user()->id,
+            'status'  => $request->status,
         ]);
+
 
         flash()->success('Class has been created successfully!');
 
@@ -87,6 +90,7 @@ class ClassController extends Controller implements HasMiddleware
 
         $classes->name = $request->name;
         $classes->status = $request->status;
+        $classes->created_by = Auth::user()->id;
 
         $classes->save();
 

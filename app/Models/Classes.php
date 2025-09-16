@@ -12,4 +12,9 @@ class Classes extends Model
     {
         return $this->hasMany(User::class, 'class_id', 'id');
     }
+
+    public function subjects()
+    {
+        return $this->hasMany(Subject::class, 'class_id');
+    }
 }

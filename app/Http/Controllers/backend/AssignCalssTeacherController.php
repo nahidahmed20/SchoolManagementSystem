@@ -17,6 +17,8 @@ class AssignCalssTeacherController extends Controller
     public function index()
     {
         $data['classTeachers'] = AssignClassTeacher::with(['teacher','class'])->orderByDesc('id')->get();
+        $data['totalClassTeachers'] = $data['classTeachers']->count();
+
         return view('backend.assign_teacher.index',$data);
     }
 
@@ -27,6 +29,7 @@ class AssignCalssTeacherController extends Controller
     {
         $data['teachers'] = User::where('is_admin',4)->where('status',1)->get();
         $data['classes'] = Classes::where('status',1)->get();
+
         return view('backend.assign_teacher.create',$data);
     }
 
@@ -144,5 +147,19 @@ class AssignCalssTeacherController extends Controller
 
         return redirect()->route('class-teachers.index')
             ->with('success', 'Assign class teacher deleted successfully.');
+    }
+
+    public function classSubjectShow()
+    {
+        $userId = Auth::id();
+        $data['classSubjects'] = AssignClassTeacher::with([
+                'classSubject.class',
+                'classSubject.subject'
+            ])
+            ->where('teacher_id', $userId)
+            ->where('status', 1)
+            ->get();
+            
+        return view('backend.assign_teacher.class_subject_show', $data);
     }
 }
