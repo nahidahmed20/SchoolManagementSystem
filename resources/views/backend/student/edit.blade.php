@@ -187,7 +187,7 @@
                             <div class="col-md-6">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-briefcase"></i></span>
-                                    <input type="nuber" name="height" value="{{ old('height', $student->height) }}" class="form-control">
+                                    <input type="text" name="height" value="{{ old('height', $student->height) }}" class="form-control">
                                 </div>
                                 @error('height') <span class="text-danger">{{ $message }}</span> @enderror
                             </div>

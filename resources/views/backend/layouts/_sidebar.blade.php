@@ -78,66 +78,6 @@
             </li>
         @endcan
 
-        @can('view class')
-            <li class="xn-openable {{ request()->is('classes*') ? 'active' : '' }}">
-                <a href="#">
-                    <span class="fa fa-graduation-cap"></span> <span class="xn-text">Class</span>
-                </a>
-                <ul>
-                    <li class="{{ request()->routeIs('classes.index') ? 'active' : '' }}"><a href="{{route('classes.index')}}"><span class="fa fa-image"></span> Class List</a></li>
-                    <li class="{{ request()->routeIs('classes.create') ? 'active' : '' }}"><a href="{{route('classes.create')}}"><span class="fa fa-user"></span> Class Create</a></li>
-                </ul>
-            </li>
-        @endcan
-
-        @can('view subject')
-            <li class="xn-openable {{ request()->is('subjects*') ? 'active' : '' }}">
-                <a href="#">
-                    <span class="fa fa-book"></span> <span class="xn-text">Subject</span>
-                </a>
-                <ul>
-                    <li class="{{ request()->routeIs('subjects.index') ? 'active' : '' }}"><a href="{{route('subjects.index')}}"><span class="fa fa-image"></span> Subject List</a></li>
-                    <li class="{{ request()->routeIs('subjects.create') ? 'active' : '' }}"><a href="{{route('subjects.create')}}"><span class="fa fa-user"></span> Subject Create</a></li>
-                </ul>
-            </li>
-        @endcan
-
-        @can('view class-subject')
-            <li class="xn-openable {{ request()->is('class-subjects*') ? 'active' : '' }}">
-                <a href="#">
-                    <span class="fa fa-book"></span> <span class="xn-text">Class Subject</span>
-                </a>
-                <ul>
-                    <li class="{{ request()->routeIs('class-subjects.index') ? 'active' : '' }}"><a href="{{route('class-subjects.index')}}"><span class="fa fa-image"></span> Class Subject List</a></li>
-                    <li class="{{ request()->routeIs('class-subjects.create') ? 'active' : '' }}"><a href="{{route('class-subjects.create')}}"><span class="fa fa-user"></span> Class Subject Create</a></li>
-                </ul>
-            </li>
-        @endcan
-
-        @can('view class-teacher')
-            <li class="xn-openable {{ request()->is('class-teachers*') ? 'active' : '' }}">
-                <a href="#">
-                    <span class="fa fa-book"></span> <span class="xn-text">Assign Class Teacher</span>
-                </a>
-                <ul>
-                    <li class="{{ request()->routeIs('class-teachers.index') ? 'active' : '' }}"><a href="{{route('class-teachers.index')}}"><span class="fa fa-image"></span>Assign Class  List</a></li>
-                    <li class="{{ request()->routeIs('class-teachers.create') ? 'active' : '' }}"><a href="{{route('class-teachers.create')}}"><span class="fa fa-user"></span>Assign Class  Create</a></li>
-                </ul>
-            </li>
-        @endcan
-
-        @can('view myClassAndSubject')
-            <li class="xn-openable {{ request()->is('my-classes*') ? 'active' : '' }}">
-                <a href="#">
-                    <span class="fa fa-book"></span> <span class="xn-text">My Class & Subject</span>
-                </a>
-                <ul>
-                    <li class="{{ request()->routeIs('my-classes.index') ? 'active' : '' }}"><a href="{{route('my-classes.index')}}"><span class="fa fa-image"></span> My Class & Subject List</a></li>
-                    {{-- <li class="{{ request()->routeIs('my-classes.create') ? 'active' : '' }}"><a href="{{route('my-classes.create')}}"><span class="fa fa-user"></span> My Class Create</a></li> --}}
-                </ul>
-            </li>
-        @endcan
-
         @can('view student')
             <li class="xn-openable {{ request()->is('students*') ? 'active' : '' }}">
                 <a href="#">
@@ -161,6 +101,86 @@
                 </ul>
             </li>
         @endcan
+
+        @can('academic management')
+            <li class="xn-openable">
+                <a href="tables.html"><span class="fa fa-table"></span> <span class="xn-text">Academic</span></a>
+                <ul>                            
+                    @can('view class')
+                        <li class="xn-openable {{ request()->is('classes*') ? 'active' : '' }}">
+                            <a href="{{route('classes.index')}}"><span class="fa fa-image"></span> Class</a>
+                        </li>
+                    @endcan
+
+                    @can('view subject')
+                        <li class="xn-openable {{ request()->is('subjects*') ? 'active' : '' }}">
+                            <a href="{{route('subjects.index')}}"><span class="fa fa-image"></span> Subject</a>
+                        </li>
+                    @endcan
+
+                    @can('view class-subject')
+                        <li class="xn-openable {{ request()->is('class-subjects*') ? 'active' : '' }}">
+                            <a href="{{route('class-subjects.index')}}"><span class="fa fa-image"></span> Class Subject</a>
+                        </li>
+                    @endcan
+
+                    @can('view class-timetable')
+                        <li class="xn-openable {{ request()->is('class-timetables*') ? 'active' : '' }}">
+                            <a href="{{route('class-timetables.index')}}"><span class="fa fa-image"></span> Class Timetable</a>
+                        </li>
+                    @endcan
+
+                    @can('view class-teacher')
+                        <li class="xn-openable {{ request()->is('class-teachers*') ? 'active' : '' }}">
+                            <a href="{{route('class-teachers.index')}}"><span class="fa fa-image"></span>Assign Class</a>
+                        </li>
+                    @endcan                           
+                </ul>
+            </li>
+        @endcan
+        
+        @can('view examination')
+            <li class="xn-openable {{ request()->is('examinations*') ? 'active' : '' }}">
+                <a href="#">
+                    <span class="fa fa-clipboard"></span> <span class="xn-text">Examination</span>
+                </a>
+                <ul>
+                    <li class="{{ request()->routeIs('examinations.index') ? 'active' : '' }}">
+                        <a href="{{route('examinations.index')}}"><span class="fa fa-image"></span> Exam</a>
+                    </li>
+                    <li class="{{ request()->routeIs('examination.shedule') ? 'active' : '' }}">
+                        <a href="{{route('examination.shedule')}}"><span class="fa fa-image"></span> Exam Shedule</a>
+                    </li>
+                </ul>
+            </li>
+        @endcan
+        
+
+        @can('view myClassAndSubject')
+            <li class="xn-openable {{ request()->is('class-subject/show') ? 'active' : '' }}">
+                <a href="#">
+                    <span class="fa fa-book"></span> <span class="xn-text">My Class & Subject</span>
+                </a>
+                <ul>
+                    <li class="{{ request()->routeIs('my-classes.index') ? 'active' : '' }}"><a href="{{route('my-classes.index')}}"><span class="fa fa-image"></span> My Class & Subject List</a></li>
+                    {{-- <li class="{{ request()->routeIs('my-classes.create') ? 'active' : '' }}"><a href="{{route('my-classes.create')}}"><span class="fa fa-user"></span> My Class Create</a></li> --}}
+                </ul>
+            </li>
+        @endcan
+
+        @can('view mystudent')
+            <li class="xn-openable {{ request()->is('my-student/show') ? 'active' : '' }}">
+                <a href="#">
+                    <span class="fa fa-book"></span> <span class="xn-text">My Student</span>
+                </a>
+                <ul>
+                    <li class="{{ request()->routeIs('my-student.index') ? 'active' : '' }}"><a href="{{route('my-student.index')}}"><span class="fa fa-image"></span> My Student List</a></li>
+                    {{-- <li class="{{ request()->routeIs('my-classes.create') ? 'active' : '' }}"><a href="{{route('my-classes.create')}}"><span class="fa fa-user"></span> My Class Create</a></li> --}}
+                </ul>
+            </li>
+        @endcan
+        
+        
     </ul>
     <!-- END X-NAVIGATION -->
     <div class="sidebar-logo text-center py-3">

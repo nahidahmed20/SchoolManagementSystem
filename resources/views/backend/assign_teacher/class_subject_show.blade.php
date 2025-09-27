@@ -51,6 +51,15 @@
             <i class="fa fa-plus"></i> Create
         </a>
     @endcan
+    @if($classSubjects->isNotEmpty())
+        <div class="mb-3">
+            <a href="{{ route('teacher-timeTable', ['class_id' => $classSubjects->first()->class_id]) }}" 
+                class="btn btn-info btn-sm rounded-0 border-0">
+                My Class Timetable
+            </a>
+        </div>
+    @endif
+
 </div>
 
 <div class="page-content-wrap">
@@ -65,7 +74,7 @@
                                 <th style="text-align: center !important;">Class Name</th>
                                 <th style="text-align: center !important;">Subject Name</th>
                                 <th style="text-align: center !important;">Create By</th>
-                                <th style="text-align: center !important;">Status</th>
+                                {{-- <th style="text-align: center !important;">Action</th> --}}
                             </tr>
                         </thead>
                         <tbody>
@@ -81,13 +90,12 @@
                                         School Admin
                                         @endif
                                     </td>
-                                    <td>
-                                        @if($assign->status == 1)
-                                            <span class="badge badge-success">Active</span>
-                                        @else
-                                            <span class="badge badge-danger">Inactive</span>
-                                        @endif
-                                    </td>
+                                    {{-- <td>
+                                        <a href="{{ route('teacher-timeTable', ['class_id' => $assign->class_id]) }}" 
+                                            class="btn btn-info btn-sm rounded-0 border-0">
+                                            My Class Timetable
+                                        </a>
+                                    </td> --}}
                                 </tr>
                             @endforeach
                         </tbody>
@@ -101,22 +109,6 @@
 @endsection
 
 @section('scripts')
-<!-- DataTables CSS/JS -->
-<link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
-<link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.4.1/css/buttons.dataTables.min.css">
-<link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.dataTables.min.css">
-
-<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/2.4.1/js/dataTables.buttons.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.html5.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.print.min.js"></script>
-<script src="https://cdn.datatables.net/responsive/2.5.0/js/dataTables.responsive.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
-
-<!-- SweetAlert2 -->
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <script>
     $(document).ready(function() {

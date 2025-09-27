@@ -11,12 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('assign_class_teachers', function (Blueprint $table) {
+        Schema::create('examinations', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('class_id');
-            $table->unsignedBigInteger('teacher_id');
-            $table->tinyInteger('created_by')->nullable();
-            $table->tinyInteger('status')->nullable();
+            $table->string('name')->nullable();
+            $table->text('note')->nullable();
+            $table->tinyInteger('created_by');
             $table->timestamps();
         });
     }
@@ -26,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('assign_class_teachers');
+        Schema::dropIfExists('examinations');
     }
 };

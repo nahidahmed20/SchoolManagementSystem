@@ -4,6 +4,7 @@ namespace App\Http\Controllers\backend;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Models\ClassTimetable;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -181,4 +182,14 @@ class ParentController extends Controller
         return redirect()->route('parents.index');
     }
 
+    public function studentTimetables($id)
+    {
+        $student = User::findOrFail($id);
+
+        $timeTables = ClassTimetable::with(['class', 'subject', 'weekday'])
+            ->where('class_id', $student->class_id)
+            ->get();
+
+        return view('backend.parent.student-timetables', compact('timeTables'));
+    }
 }

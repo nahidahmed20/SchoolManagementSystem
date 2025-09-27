@@ -37,14 +37,15 @@ class RoleController extends Controller implements HasMiddleware
     {
         $validatedData = $request->validate([
             'name' => 'required|unique:roles,name',
-            'permissions' => 'array', // optional validation
+            'permissions' => 'array', 
         ]);
 
-        // নতুন role create
         $role = Role::create(['name' => $request->name]);
 
-        // Permissions assign (if any)
-        $role->syncPermissions($request->permissions ?? []);
+        if ($request->filled('permissions')) {
+            $permissions = Permission::whereIn('id', $request->permissions)->pluck('name')->toArray();
+            $role->syncPermissions($permissions);
+        }
 
         flash()->success('Role created successfully.', ['title' => 'Success']);
         return redirect()->route('role.index');

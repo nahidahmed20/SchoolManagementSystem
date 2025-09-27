@@ -31,7 +31,7 @@ return new class extends Migration
             $table->string('designation',100)->nullable();
             $table->string('department',100)->nullable();
             $table->string('number',100)->nullable();
-            $table->integer('height')->nullable();
+            $table->string('height')->nullable();
             $table->integer('weight')->nullable();
             $table->string('marital_status',100)->nullable();
             $table->string('qualification',100)->nullable();

@@ -183,7 +183,7 @@
                             <div class="col-md-6">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-briefcase"></i></span>
-                                    <input type="number" name="height" value="{{ old('height') }}" class="form-control">
+                                    <input type="text" name="height" value="{{ old('height') }}" class="form-control">
                                 </div>
                                 @error('height') <span class="text-danger">{{ $message }}</span> @enderror
                             </div>
@@ -210,18 +210,6 @@
                                     <input type="text" name="nationality" value="{{ old('nationality') }}" class="form-control">
                                 </div>
                                 @error('nationality') <span class="text-danger">{{ $message }}</span> @enderror
-                            </div>
-                        </div>
-
-                        <!-- Blood Group -->
-                        <div class="form-group row">
-                            <label class="col-md-3 control-label">Blood Group</label>
-                            <div class="col-md-6">
-                                <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-tint"></i></span>
-                                    <input type="text" name="blood_group" value="{{ old('blood_group') }}" class="form-control">
-                                </div>
-                                @error('blood_group') <span class="text-danger">{{ $message }}</span> @enderror
                             </div>
                         </div>
 

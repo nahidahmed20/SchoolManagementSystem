@@ -105,5 +105,10 @@ class SubjectController extends Controller
         flash()->success('Subject deleted successfully!');
         return redirect()->route('subjects.index');
     }
+
+    public function mySubjectShow()
+    {
+        $subjects = Subject::where('created_by', Auth::user()->id)->get();
+    }
 }
 

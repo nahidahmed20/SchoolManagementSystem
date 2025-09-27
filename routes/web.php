@@ -13,7 +13,9 @@ use App\Http\Controllers\backend\SchoolController;
 use App\Http\Controllers\backend\StudentController;
 use App\Http\Controllers\backend\SubjectController;
 use App\Http\Controllers\backend\TeacherController;
+use App\Http\Controllers\backend\ExaminationController;
 use App\Http\Controllers\backend\ClassSubjectController;
+use App\Http\Controllers\backend\ClassTimetableController;
 use App\Http\Controllers\backend\AssignCalssTeacherController;
 
 Route::get('/',[HomeController::class, 'index'] )->name('home');
@@ -55,17 +57,32 @@ Route::middleware('auth')->group(function () {
     Route::resource('classes',ClassController::class);
 
     Route::resource('subjects',SubjectController::class);
+    Route::get('/my-subjects/show', [SubjectController::class, 'mySubjectShow'])->name('my-subject.index');
 
     Route::resource('class-subjects',ClassSubjectController::class);
+    Route::get('/my-classes/show', [ClassSubjectController::class, 'myClassesShow'])->name('my-classes.index');
 
     Route::resource('class-teachers',AssignCalssTeacherController::class);
     Route::get('/class-subject/show', [AssignCalssTeacherController::class, 'classSubjectShow'])->name('my-classes.index');
+    Route::get('/my-student/show', [AssignCalssTeacherController::class, 'myStudentShow'])->name('my-student.index');
+    Route::get('/teacher-timetable/{class_id}', [AssignCalssTeacherController::class, 'teacherTimetable'])->name('teacher-timeTable');
+
+    Route::resource('class-timetables',ClassTimetableController::class);
+    Route::post('get-subjects',[ClassTimetableController::class, 'getSubjects'])->name('getSubjects');
+    Route::get('/get-class-timetable', [ClassTimetableController::class, 'getClassTimetable'])->name('getClassTimetable');
+
 
     Route::resource('students',StudentController::class);
 
     Route::resource('parents',ParentController::class);
     Route::get('/parents/mystudents/{parent}', [ParentController::class, 'myStudents'])->name('parents.mystudents');
     Route::get('/add/mystudent/{student_id}/{parent_id}', [ParentController::class, 'addMyStudent'])->name('parents.addMyStudent');
+    Route::get('parents/student-timetables/{id}', [ParentController::class,'studentTimetables'])->name('parentStudents.timeTable');
+
+    Route::resource('examinations',ExaminationController::class);
+    Route::get('/examination-shedules', [ExaminationController::class, 'examinationShedules'])->name('examination.shedule');
+    Route::post('/get-class-subjects', [ExaminationController::class, 'getClassSubjects'])->name('getClassSubjects');
+    Route::post('/exam-timetable/store', [ExaminationController::class, 'examTimetableStore'])->name('examTimetables.store');
 });
 
 require __DIR__.'/auth.php';

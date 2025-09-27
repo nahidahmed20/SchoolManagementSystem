@@ -7,6 +7,7 @@ use App\Models\Classes;
 use Illuminate\Http\Request;
 use App\Models\AssignClassTeacher;
 use App\Http\Controllers\Controller;
+use App\Models\ClassTimetable;
 use Illuminate\Support\Facades\Auth;
 
 class AssignCalssTeacherController extends Controller
@@ -18,7 +19,7 @@ class AssignCalssTeacherController extends Controller
     {
         $data['classTeachers'] = AssignClassTeacher::with(['teacher','class'])->orderByDesc('id')->get();
         $data['totalClassTeachers'] = $data['classTeachers']->count();
-
+        
         return view('backend.assign_teacher.index',$data);
     }
 
@@ -154,12 +155,43 @@ class AssignCalssTeacherController extends Controller
         $userId = Auth::id();
         $data['classSubjects'] = AssignClassTeacher::with([
                 'classSubject.class',
-                'classSubject.subject'
             ])
             ->where('teacher_id', $userId)
             ->where('status', 1)
             ->get();
-            
+       
         return view('backend.assign_teacher.class_subject_show', $data);
     }
+
+    public function myStudentShow()
+    {
+        $userId = Auth::id();
+
+
+        $data['myStudents'] = AssignClassTeacher::with('class.students')
+            ->where('teacher_id', $userId)
+            ->where('status', 1)
+            ->get();
+
+        return view('backend.assign_teacher.add_my_student', $data);
+    }
+
+    public function teacherTimetable()
+    {
+        $teacherId = Auth::id();
+
+        $classAssignments = AssignClassTeacher::where('teacher_id', $teacherId)->pluck('class_id');
+
+        if ($classAssignments->isEmpty()) {
+            return redirect()->back()->with('error', 'You are not assigned to any class.');
+        }
+
+        $timeTables = ClassTimetable::whereIn('class_id', $classAssignments)
+            ->with(['weekday','subject','class'])
+            ->get();
+
+        return view('backend.assign_teacher.teacher_timetable', compact('timeTables'));
+    }
+
+    
 }

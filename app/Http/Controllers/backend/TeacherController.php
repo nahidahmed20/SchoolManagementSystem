@@ -27,6 +27,7 @@ class TeacherController extends Controller implements HasMiddleware
     public function index()
     {
         $teachers = User::where('is_admin',4)->orderByDesc('id')->get();
+       
         return view('backend.teacher.index', compact('teachers'));
     }
 
@@ -107,7 +108,7 @@ class TeacherController extends Controller implements HasMiddleware
      */
     public function show(string $id)
     {
-        //
+        
     }
 
     /**
@@ -207,4 +208,7 @@ class TeacherController extends Controller implements HasMiddleware
 
         return redirect()->route('teachers.index');
     }
+
+    
+    
 }
